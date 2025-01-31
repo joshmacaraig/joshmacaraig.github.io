@@ -6,7 +6,123 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<meta name="description" content="Certified enterprise developer specializing in no-code/low-code solutions, automation, and full-stack development" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+		<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+			body {
+				font-family: 'Sora', sans-serif;
+			}
+			.skill-tag {
+				background: rgba(255,255,255,0.1);
+				backdrop-filter: blur(10px);
+				padding: 8px 16px;
+				border-radius: 50px;
+				margin: 5px;
+				display: inline-flex;
+				align-items: center;
+				gap: 8px;
+				transition: all 0.3s ease;
+			}
+			.skill-tag:hover {
+				transform: translateY(-2px);
+				background: rgba(255,255,255,0.2);
+			}
+			.project-card {
+				background: rgba(255,255,255,0.05);
+				backdrop-filter: blur(10px);
+				border-radius: 16px;
+				padding: 20px;
+				transition: all 0.3s ease;
+				border: 1px solid rgba(255,255,255,0.1);
+			}
+			.project-card:hover {
+				transform: translateY(-5px);
+				box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+			}
+			.tech-stack {
+				margin-top: 15px;
+				padding-top: 15px;
+				border-top: 1px solid rgba(255,255,255,0.1);
+				display: flex;
+				gap: 12px;
+				align-items: center;
+			}
+			.service-card {
+				background: rgba(255,255,255,0.05);
+				backdrop-filter: blur(10px);
+				border-radius: 16px;
+				padding: 25px;
+				margin-bottom: 20px;
+				border: 1px solid rgba(255,255,255,0.1);
+			}
+			.service-card h3 {
+				display: flex;
+				align-items: center;
+				gap: 10px;
+				margin-bottom: 20px;
+			}
+			.service-card ul li {
+				display: flex;
+				align-items: center;
+				gap: 10px;
+				margin-bottom: 15px;
+			}
+			.cert-badge {
+				background: rgba(255,255,255,0.05);
+				backdrop-filter: blur(10px);
+				border-radius: 16px;
+				padding: 20px;
+				display: inline-flex;
+				align-items: center;
+				gap: 15px;
+				margin-top: 20px;
+				border: 1px solid rgba(255,255,255,0.1);
+			}
+			input[type="text"],
+			input[type="email"],
+			select,
+			textarea {
+				background: rgba(255,255,255,0.05) !important;
+				border: 1px solid rgba(255,255,255,0.1) !important;
+				border-radius: 8px !important;
+				backdrop-filter: blur(10px);
+			}
+			input[type="submit"] {
+				background: linear-gradient(45deg, #2563eb, #3b82f6) !important;
+				border-radius: 8px !important;
+				border: none !important;
+				padding: 15px 30px !important;
+				font-weight: 600 !important;
+				letter-spacing: 0.5px !important;
+				transition: all 0.3s ease !important;
+			}
+			input[type="submit"]:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+			}
+			#nav {
+				background: rgba(255,255,255,0.05);
+				backdrop-filter: blur(10px);
+				border-radius: 16px;
+				padding: 10px;
+				border: 1px solid rgba(255,255,255,0.1);
+			}
+			.intro header h1 {
+				font-size: 3.5em;
+				font-weight: 700;
+				margin-bottom: 0.2em;
+				background: linear-gradient(45deg, #2563eb, #3b82f6);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+			}
+			.bio {
+				font-size: 1.2em;
+				line-height: 1.6;
+				color: rgba(255,255,255,0.8);
+				margin-top: 20px;
+			}
+		</style>
 	</head>
 	<body class="is-preload">
 		<div id="wrapper">
@@ -22,9 +138,17 @@
 				<article id="home" class="panel intro">
 					<header>
 						<h1>Joshua Macaraig</h1>
-						<p class="tag">Enterprise Solutions Architect | Application Developer</p>
-
-						<p class="bio">Building scalable enterprise solutions with 4+ years of experience in full-stack and low-code development.</p>
+						<p>Enterprise Solutions Architect | Certified Salesforce Developer</p>
+						<div class="skills">
+							<span class="skill-tag"><i class="fab fa-salesforce"></i> Salesforce</span>
+							<span class="skill-tag"><i class="fas fa-database"></i> Xano</span>
+							<span class="skill-tag"><i class="fab fa-webflow"></i> Webflow</span>
+							<span class="skill-tag"><i class="fas fa-code"></i> Weweb</span>
+							<span class="skill-tag"><i class="fab fa-vuejs"></i> Vue.js</span>
+							<span class="skill-tag"><i class="fab fa-laravel"></i> Laravel</span>
+							<span class="skill-tag"><i class="fas fa-cogs"></i> Make</span>
+						</div>
+						<p class="bio">Building scalable enterprise solutions with 4+ years of experience in full-stack and low-code development. Certified Salesforce B2C Commerce Developer.</p>
 					</header>
 					<a href="#projects" class="jumplink pic">
 						<span class="arrow icon solid fa-chevron-right"><span>See my work</span></span>
@@ -35,48 +159,83 @@
 				<!-- Projects -->
 				<article id="projects" class="panel">
 					<header>
-						<h2>Featured Projects</h2>
+						<h2><i class="fas fa-code-branch"></i> Featured Projects</h2>
 					</header>
 					<section>
 						<div class="row">
 							<div class="col-4 col-6-medium col-12-small">
 								<div class="project-card">
 									<img src="/api/placeholder/400/320" alt="Housing Solutions" class="image fit"/>
-									<h3>Housing Solutions Platform</h3>
-									<p>Webflow + Wized + Xano integration for managing property deals and applicants</p>
-									<div class="tech-stack">Webflow • Wized • Xano</div>
+									<h3><i class="fas fa-home"></i> Housing Solutions Platform</h3>
+									<p>Property management system for deals and applicants</p>
+									<div class="tech-stack">
+										<i class="fab fa-webflow"></i> Webflow
+										<i class="fas fa-database"></i> Xano
+										<i class="fas fa-code"></i> Wized
+									</div>
 								</div>
 							</div>
 							<div class="col-4 col-6-medium col-12-small">
 								<div class="project-card">
-									<img src="/api/placeholder/400/320" alt="Trash Butler Suite" class="image fit"/>
-									<h3>Trash Butler Management Suite</h3>
-									<p>Area Command Center, Butler Hub with clock-in system, and Community Concierge portal</p>
-									<div class="tech-stack">Knack • Integromat • Tadabase</div>
+									<img src="/api/placeholder/400/320" alt="Area Command" class="image fit"/>
+									<h3><i class="fas fa-tasks"></i> Area Command Center</h3>
+									<p>Management dashboard for Trash Butler operations</p>
+									<div class="tech-stack">
+										<i class="fas fa-tools"></i> Knack
+										<i class="fas fa-random"></i> Integromat
+									</div>
+								</div>
+							</div>
+							<div class="col-4 col-6-medium col-12-small">
+								<div class="project-card">
+									<img src="/api/placeholder/400/320" alt="Butler Hub" class="image fit"/>
+									<h3><i class="fas fa-users"></i> Butler Hub</h3>
+									<p>Employee portal with time tracking and file uploads</p>
+									<div class="tech-stack">
+										<i class="fas fa-clock"></i> Knack
+										<i class="fas fa-cloud-upload-alt"></i> Filepond
+									</div>
+								</div>
+							</div>
+							<div class="col-4 col-6-medium col-12-small">
+								<div class="project-card">
+									<img src="/api/placeholder/400/320" alt="Community Concierge" class="image fit"/>
+									<h3><i class="fas fa-headset"></i> Community Concierge</h3>
+									<p>Client portal for service reviews and support</p>
+									<div class="tech-stack">
+										<i class="fas fa-tools"></i> Knack
+										<i class="fas fa-comments"></i> Tadabase
+									</div>
 								</div>
 							</div>
 							<div class="col-4 col-6-medium col-12-small">
 								<div class="project-card">
 									<img src="/api/placeholder/400/320" alt="Printing System" class="image fit"/>
-									<h3>Enterprise Printing System</h3>
-									<p>Multi-department system for Japanese manufacturing company</p>
-									<div class="tech-stack">Laravel • Vue.js • MySQL</div>
+									<h3><i class="fas fa-print"></i> Enterprise Printing System</h3>
+									<p>Multi-department management for manufacturing</p>
+									<div class="tech-stack">
+										<i class="fab fa-laravel"></i> Laravel
+										<i class="fab fa-vuejs"></i> Vue.js
+									</div>
 								</div>
 							</div>
 							<div class="col-4 col-6-medium col-12-small">
 								<div class="project-card">
-									<img src="/api/placeholder/400/320" alt="Developer List" class="image fit"/>
-									<h3>Developer Directory</h3>
-									<p>Interactive platform for showcasing developer profiles and skills</p>
-									<div class="tech-stack">Vue.js • PHP • MySQL</div>
+									<img src="/api/placeholder/400/320" alt="Developer Directory" class="image fit"/>
+									<h3><i class="fas fa-folder-open"></i> Developer Directory</h3>
+									<p>Interactive developer profiles and skills platform</p>
+									<div class="tech-stack">
+										<i class="fab fa-vuejs"></i> Vue.js
+										<i class="fab fa-php"></i> PHP
+									</div>
 								</div>
 							</div>
 						</div>
 					</section>
 					<div class="certifications">
-						<h3>Certifications</h3>
+						<h3><i class="fas fa-certificate"></i> Certifications</h3>
 						<div class="cert-badge">
-							<img src="/api/placeholder/100/100" alt="Salesforce Badge" />
+							<i class="fab fa-salesforce fa-3x"></i>
 							<p>Certified Salesforce B2C Commerce Developer</p>
 						</div>
 					</div>
@@ -85,23 +244,23 @@
 				<!-- Services -->
 				<article id="services" class="panel">
 					<header>
-						<h2>Services</h2>
+						<h2><i class="fas fa-laptop-code"></i> Services</h2>
 					</header>
 					<div class="services-grid">
 						<div class="service-card">
-							<h3>Enterprise Solutions</h3>
+							<h3><i class="fas fa-server"></i> Enterprise Solutions</h3>
 							<ul>
-								<li>Salesforce B2C Commerce Implementation</li>
-								<li>Custom Backend Architecture (Xano)</li>
-								<li>Frontend Development (Webflow/Vue.js)</li>
+								<li><i class="fab fa-salesforce"></i> Salesforce B2C Commerce Implementation</li>
+								<li><i class="fas fa-database"></i> Custom Backend Architecture (Xano)</li>
+								<li><i class="fab fa-webflow"></i> Frontend Development (Webflow/Vue.js)</li>
 							</ul>
 						</div>
 						<div class="service-card">
-							<h3>Business Automation</h3>
+							<h3><i class="fas fa-cogs"></i> Business Automation</h3>
 							<ul>
-								<li>Workflow Automation (Make/Integromat)</li>
-								<li>Business Process Integration</li>
-								<li>Custom CRM Solutions</li>
+								<li><i class="fas fa-random"></i> Workflow Automation (Make/Integromat)</li>
+								<li><i class="fas fa-plug"></i> Business Process Integration</li>
+								<li><i class="fas fa-chart-network"></i> Custom CRM Solutions</li>
 							</ul>
 						</div>
 					</div>
@@ -110,7 +269,7 @@
 				<!-- Contact -->
 				<article id="contact" class="panel">
 					<header>
-						<h2>Let's Work Together</h2>
+						<h2><i class="fas fa-paper-plane"></i> Let's Work Together</h2>
 					</header>
 					<form action="#" method="post">
 						<div class="row">
@@ -126,7 +285,7 @@
 									<option value="xano">Xano Development</option>
 									<option value="webflow">Webflow Development</option>
 									<option value="automation">Business Automation</option>
-									<option value="invitation">Website Invitations</option>
+									<option value="salesforce">Salesforce Implementation</option>
 								</select>
 							</div>
 							<div class="col-12">
