@@ -19,7 +19,6 @@ const ProjectCard = ({ project }) => {
     impact, 
     contribution, 
     role, 
-    image, 
     link 
   } = project;
 
