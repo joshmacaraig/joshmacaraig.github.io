@@ -32,10 +32,10 @@ const Hero = () => {
             {personalData.summary}
           </p>
           
-          <div className="flex justify-center space-x-4">
+          <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
             <motion.a 
               href="#projects"
-              className="btn-primary"
+              className="btn-primary min-w-[200px] sm:min-w-0"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -43,7 +43,7 @@ const Hero = () => {
             </motion.a>
             <motion.a 
               href="#contact"
-              className="btn-secondary"
+              className="btn-secondary min-w-[200px] sm:min-w-0"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
