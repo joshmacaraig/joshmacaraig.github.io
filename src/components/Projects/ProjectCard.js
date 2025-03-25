@@ -19,6 +19,7 @@ const ProjectCard = ({ project }) => {
     impact, 
     contribution, 
     role, 
+    image, 
     link 
   } = project;
 
@@ -28,10 +29,13 @@ const ProjectCard = ({ project }) => {
       variants={item}
     >
       <div className="relative h-48 bg-gray-200 dark:bg-dark-accent">
-        {/* This would be replaced with actual image once available */}
-        <div className="absolute inset-0 flex items-center justify-center text-gray-400">
-          <span>{title} Preview</span>
-        </div>
+        {image ? (
+          <img src={image} alt={title} className="w-full h-full object-cover" />
+        ) : (
+          <div className="absolute inset-0 flex items-center justify-center text-gray-400">
+            <span>{title} Preview</span>
+          </div>
+        )}
       </div>
       
       <div className="p-6 flex flex-col flex-grow">
