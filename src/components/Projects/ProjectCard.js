@@ -28,14 +28,11 @@ const ProjectCard = ({ project }) => {
       className="card overflow-hidden flex flex-col h-full"
       variants={item}
     >
-      <div className="relative h-48 bg-gray-200 dark:bg-dark-accent">
-        {image ? (
-          <img src={image} alt={title} className="w-full h-full object-cover" />
-        ) : (
-          <div className="absolute inset-0 flex items-center justify-center text-gray-400">
-            <span>{title} Preview</span>
-          </div>
-        )}
+      <div className="relative h-48 bg-gradient-to-br from-primary-500/20 to-primary-700/20 dark:from-primary-800/30 dark:to-primary-900/30">
+        <div className="absolute inset-0 flex flex-col items-center justify-center">
+          <span className="text-primary-700 dark:text-primary-300 font-bold">{title}</span>
+          <span className="text-sm text-primary-600/70 dark:text-primary-400/70 mt-1">{period}</span>
+        </div>
       </div>
       
       <div className="p-6 flex flex-col flex-grow">
@@ -112,7 +109,8 @@ const ProjectCard = ({ project }) => {
           </div>
         )}
         
-        <div className="mt-auto pt-4">
+        {/* Learn More link hidden for now */}
+        {/* <div className="mt-auto pt-4">
           <a 
             href={link} 
             target="_blank" 
@@ -121,7 +119,7 @@ const ProjectCard = ({ project }) => {
           >
             Learn More <FiExternalLink className="ml-1" />
           </a>
-        </div>
+        </div> */}
       </div>
     </motion.div>
   );
