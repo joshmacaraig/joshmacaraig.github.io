@@ -46,7 +46,7 @@ const Header = () => {
             <a href="#contact" className="nav-link">Contact</a>
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-dark-accent transition-colors"
+              className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
               aria-label="Toggle dark mode"
             >
               {isDarkMode ? <FiSun className="text-yellow-400" /> : <FiMoon />}
@@ -57,14 +57,14 @@ const Header = () => {
           <div className="flex md:hidden items-center">
             <button 
               onClick={toggleTheme} 
-              className="p-2 mr-2 rounded-full hover:bg-gray-100 dark:hover:bg-dark-accent transition-colors"
+              className="p-2 mr-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
               aria-label="Toggle dark mode"
             >
               {isDarkMode ? <FiSun className="text-yellow-400" /> : <FiMoon />}
             </button>
             <button
               onClick={toggleMenu}
-              className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-dark-accent transition-colors"
+              className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
               aria-label="Toggle menu"
             >
               {isMenuOpen ? <FiX /> : <FiMenu />}
@@ -74,7 +74,7 @@ const Header = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden mt-4 py-4 border-t border-gray-200 dark:border-gray-700">
+          <div className="md:hidden mt-4 py-4 border-t border-gray-200 dark:border-gray-800">
             <nav className="flex flex-col space-y-4">
               <Link to="/" className="nav-link" onClick={toggleMenu}>Home</Link>
               <a href="#projects" className="nav-link" onClick={toggleMenu}>Projects</a>

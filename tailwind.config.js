@@ -25,7 +25,7 @@ module.exports = {
         dark: {
           bg: '#121212',
           card: '#1e1e1e',
-          accent: '#2d2d2d',
+          accent: '#222222',
         },
       },
       animation: {
