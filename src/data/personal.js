@@ -1,12 +1,12 @@
 const personalData = {
   name: "Josh Macaraig",
   title: "Full-Stack Developer",
-  summary: "Specializing in low-code platforms and traditional development with expertise in creating comprehensive business solutions. Memory athlete and AI enthusiast.",
+  summary: "Full-stack developer bridging low-code efficiency with traditional development precision. Creating innovative business solutions while exploring the frontiers of practical AI applications.",
   email: "bajejosh@gmail.com",
   github: "https://github.com/joshmacaraig",
   linkedin: "https://linkedin.com/in/joshmacaraig", // Replace with your actual LinkedIn profile
   memoryAthleteProfile: "https://global-memory.org/athlete.php?id=14786",
-  aboutMe: `Full-Stack Developer specializing in low-code platforms and traditional development with expertise in creating comprehensive business solutions. I have a passion for building efficient, scalable applications that solve real-world problems. I'm also a memory athlete and enthusiastic about leveraging AI in my work.`
+  aboutMe: `Full-stack developer bridging low-code efficiency with traditional development precision. I have a passion for creating innovative business solutions that solve real-world problems while exploring the frontiers of practical AI applications. My focus is on building efficient, scalable software that delivers tangible value.`
 };
 
 export default personalData;
