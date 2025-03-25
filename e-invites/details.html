@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Invitation</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="app">
+        <div class="loading">Loading wedding details...</div>
+    </div>
+    
+    <script>
+        // Constants
+        const API_URL = 'https://x8ki-letl-twmt.n7.xano.io/api:LjBiqEqa';
+
+        // Get event name from URL
+        function getEventNameFromUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('event');
+        }
+
+        // Safely execute inline scripts
+        function executeInlineScripts(container) {
+            container.querySelectorAll('script').forEach(script => {
+                try {
+                    // Create a new script element to execute the inline script
+                    const scriptElement = document.createElement('script');
+                    scriptElement.textContent = script.textContent;
+                    document.body.appendChild(scriptElement);
+                    document.body.removeChild(scriptElement);
+                } catch (error) {
+                    console.error('Error executing inline script:', error);
+                }
+            });
+        }
+
+        // Render event details
+        function renderEventDetails(data) {
+            const app = document.getElementById('app');
+            app.innerHTML = ''; // Clear the app div
+
+            // Create a script tag to store the response data
+            const dataScript = document.createElement('script');
+            dataScript.id = 'data';
+            dataScript.type = 'application/json';
+            
+            // Determine the groom and bride
+            const groom = data.page_details.users.find(user => user.type_id === 1);
+            const bride = data.page_details.users.find(user => user.type_id === 2);
+
+            // Prepare window-level data for the scripts
+            window.groom = groom;
+            window.bride = bride;
+            window.weddingDate = '2025-02-08'; // You may want to make this dynamic
+            window.weddingTime = '4:00 PM'; // You may want to make this dynamic
+            window.weddingLocation = 'Wedding Venue'; // You may want to make this dynamic
+
+            dataScript.textContent = JSON.stringify({
+                groom,
+                bride,
+                weddingDate: window.weddingDate,
+                weddingTime: window.weddingTime,
+                weddingLocation: window.weddingLocation
+            });
+            document.body.appendChild(dataScript);
+
+            // Check if page_details exists in the response data
+            if (data.page_details.page_details && Array.isArray(data.page_details.page_details)) {
+                // Loop through the page_details array and render each section
+                data.page_details.page_details.forEach(section => {
+                    if (section.is_visible) {
+                        // Create a new div for each visible section
+                        const sectionDiv = document.createElement('div');
+                        sectionDiv.className = `section ${section.section.toLowerCase().replace(/\s+/g, '-')}`;
+                        
+                        // Set the innerHTML of the section div to the embed_code
+                        sectionDiv.innerHTML = section.embed_code;
+
+                        // Append the section div to the app div
+                        app.appendChild(sectionDiv);
+                    }
+                });
+
+                // Execute scripts in each section after a short delay
+                setTimeout(() => {
+                    executeInlineScripts(app);
+                }, 100);
+            } else {
+                app.innerHTML = `<div class="error">Invalid response data</div>`;
+            }
+        }
+
+        // Get event details
+        async function getEventDetails() {
+            const eventName = getEventNameFromUrl();
+            
+            if (!eventName) {
+                document.getElementById('app').innerHTML = `
+                    <div class="error">No event specified</div>
+                `;
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_URL}/invitation/get_details`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        event_name: eventName
+                    })
+                });
+
+                const data = await response.json();
+                console.log('API Response:', data);
+
+                if (data.status === 'success') {
+                    renderEventDetails(data.page_details);
+                } else {
+                    document.getElementById('app').innerHTML = `
+                        <div class="error">Failed to load wedding details. Please try again later.</div>
+                    `;
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('app').innerHTML = `
+                    <div class="error">Failed to load wedding details. Please try again later.</div>
+                `;
+            }
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', getEventDetails);
+    </script>
+</body>
+</html>
