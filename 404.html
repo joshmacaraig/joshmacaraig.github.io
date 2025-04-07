@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Page Not Found</title>
+  <script type="text/javascript">
+    // This script handles missing paths at the root level
+    var pathName = window.location.pathname;
+    
+    // Check if trying to access church-connect
+    if (pathName.startsWith('/church-connect/')) {
+      window.location.href = '/church-connect/';
+    } else {
+      // Default to homepage for other paths
+      window.location.href = '/';
+    }
+  </script>
+</head>
+<body>
+  <h1>Page Not Found</h1>
+  <p>Redirecting you to the appropriate location...</p>
+</body>
+</html>
