@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FiExternalLink } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
+import { FiExternalLink, FiPlay } from 'react-icons/fi';
 
 const item = {
   hidden: { opacity: 0, y: 20 },
@@ -19,7 +20,6 @@ const ProjectCard = ({ project }) => {
     impact, 
     contribution, 
     role, 
-    image, 
     link 
   } = project;
 
@@ -109,17 +109,35 @@ const ProjectCard = ({ project }) => {
           </div>
         )}
         
-        {/* Learn More link hidden for now */}
-        {/* <div className="mt-auto pt-4">
-          <a 
-            href={link} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="inline-flex items-center text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300"
-          >
-            Learn More <FiExternalLink className="ml-1" />
-          </a>
-        </div> */}
+        {/* Project Link */}
+        {link && link !== "#" && (
+          <div className="mt-auto pt-4">
+            {project.isGame ? (
+              <Link 
+                to={link}
+                className="inline-flex items-center bg-gradient-to-r from-yellow-500 to-orange-500 text-white px-4 py-2 rounded-lg hover:from-yellow-600 hover:to-orange-600 transition-all duration-200 font-semibold"
+              >
+                🎮 Play Games <FiPlay className="ml-2" />
+              </Link>
+            ) : link.startsWith('/') ? (
+              <Link 
+                to={link}
+                className="inline-flex items-center text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 transition-colors"
+              >
+                Learn More <FiExternalLink className="ml-1" />
+              </Link>
+            ) : (
+              <a 
+                href={link}
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 transition-colors"
+              >
+                Learn More <FiExternalLink className="ml-1" />
+              </a>
+            )}
+          </div>
+        )}
       </div>
     </motion.div>
   );

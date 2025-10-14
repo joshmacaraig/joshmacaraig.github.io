@@ -1,52 +1,40 @@
 import React from 'react';
-import { FiGithub, FiLinkedin, FiMail } from 'react-icons/fi';
+import { FiLinkedin, FiMail } from 'react-icons/fi';
 import personalData from '../../../data/personal';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-50 dark:bg-dark-card py-8">
+    <footer className="border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-[#0a0a0a] py-12">
       <div className="container-wrapper">
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="mb-4 md:mb-0">
-            <h3 className="text-lg font-semibold gradient-text">{personalData.name}</h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{personalData.title}</p>
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+          {/* Brand */}
+          <div className="text-center md:text-left">
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              © {currentYear} {personalData.name}. Building MVPs that matter.
+            </p>
           </div>
           
-          <div className="flex space-x-4">
-            <a 
-              href={personalData.github} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors"
-              aria-label="GitHub Profile"
-            >
-              <FiGithub size={20} />
-            </a>
+          {/* Social Links */}
+          <div className="flex items-center gap-6">
             <a 
               href={personalData.linkedin} 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors"
-              aria-label="LinkedIn Profile"
+              className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
+              aria-label="LinkedIn"
             >
-              <FiLinkedin size={20} />
+              <FiLinkedin className="w-5 h-5" />
             </a>
             <a 
               href={`mailto:${personalData.email}`}
-              className="text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors"
-              aria-label="Email Contact"
+              className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
+              aria-label="Email"
             >
-              <FiMail size={20} />
+              <FiMail className="w-5 h-5" />
             </a>
           </div>
-        </div>
-        
-        <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
-          <p className="text-center text-sm text-gray-600 dark:text-gray-400">
-            &copy; {currentYear} {personalData.name}. All rights reserved.
-          </p>
         </div>
       </div>
     </footer>
