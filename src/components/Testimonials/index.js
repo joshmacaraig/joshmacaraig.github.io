@@ -1,6 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FiStar, FiTwitter } from 'react-icons/fi';
+import { FiStar } from 'react-icons/fi';   // Feather Icons
+import { SiX } from 'react-icons/si';      // Simple Icons
+
+
 
 const Testimonials = () => {
   // In the future, move this to personal.js data file
@@ -142,7 +145,7 @@ const Testimonials = () => {
                   className="btn-secondary inline-flex"
                 >
                   Follow my progress
-                  <FiTwitter />
+                  <SiX />
                 </a>
               </div>
 

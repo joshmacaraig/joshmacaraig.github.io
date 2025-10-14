@@ -8,7 +8,7 @@ const personalData = {
   calendly: "https://calendly.com/joshmacaraig/free-mvp-strategy-audit",
   github: "https://github.com/joshmacaraig",
   linkedin: "https://linkedin.com/in/joshmacaraig",
-  twitter: "https://twitter.com/joshmacaraig",
+  twitter: "https://twitter.com/macaraigjosh",
   memoryAthleteProfile: "https://global-memory.org/athlete.php?id=14786",
   aboutMe: `I help indie hackers and bootstrapped startups worldwide launch fast. Using WeWeb + Xano, I deliver MVPs in days instead of months—at a fraction of traditional agency costs.
 
