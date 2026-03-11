@@ -1,62 +1,82 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import personalData from '../../data/personal';
+import { FiArrowRight } from 'react-icons/fi';
 
 const About = () => {
   return (
-    <section className="section-padding">
+    <section id="about" className="section-padding bg-white dark:bg-[#09090b]">
       <div className="container-wrapper">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+        <div className="max-w-3xl">
+
+          <motion.p
+            className="section-label mb-4"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <div className="relative h-80 md:h-full rounded-lg overflow-hidden bg-gray-200 dark:bg-dark-accent">
-              <img 
-                src="/assets/images/profile.jpg" 
-                alt="Josh Macaraig" 
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </motion.div>
-          
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            About
+          </motion.p>
+
+          <motion.h2
+            className="text-3xl md:text-4xl font-black tracking-tight mb-6 text-[#09090b] dark:text-white leading-tight"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="flex flex-col"
+            transition={{ duration: 0.6, delay: 0.05, ease: [0.19, 1, 0.22, 1] }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              About <span className="gradient-text">Me</span>
-            </h2>
-            <div className="w-20 h-1 bg-primary-500 mb-6"></div>
-            
-            <p className="text-gray-600 dark:text-gray-400 mb-6 text-lg">
-              {personalData.aboutMe}
+            Builder who bridges{' '}
+            <span className="gradient-text">design & code</span>
+          </motion.h2>
+
+          <motion.div
+            className="space-y-4 text-sm text-[#52525b] dark:text-[#a1a1aa] leading-relaxed mb-8"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            <p>
+              I'm a multi-disciplinary builder who turns early sketches into polished, reliable tools.
+              I move between modern web stacks (React, Nuxt, Tailwind) and low-code systems (WeWeb, Xano, Webflow)
+              depending on how fast we need to ship.
             </p>
-            
-            <p className="text-gray-600 dark:text-gray-400 mb-6">
-              With a passion for creating efficient and robust solutions, I specialize in bridging the gap between low-code platforms and traditional development to deliver comprehensive business applications that solve real-world problems.
+            <p>
+              Most of my work lives inside operations teams — dashboards for area managers, housing platforms
+              for agents, AI call grading systems, and community portals. I'm usually the person bridging
+              product requirements, UX, and the actual build.
             </p>
-            
-            <p className="text-gray-600 dark:text-gray-400 mb-6">
-              Beyond coding, I'm a <a href="https://global-memory.org/athlete.php?id=14786" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300">memory athlete</a> and an AI enthusiast, constantly exploring ways to leverage artificial intelligence to enhance productivity and create innovative solutions.
+            <p>
+              Outside client work I run a creative lab of memory games, chess engines, and mini apps that
+              explore animation and AI-assisted workflows — because delight belongs even in serious tools.
             </p>
-            
-            <div className="mt-auto">
-              <motion.a 
-                href="#contact"
-                className="btn-primary"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Let's Connect
-              </motion.a>
-            </div>
           </motion.div>
+
+          {/* Meta pill */}
+          <motion.div
+            className="flex flex-wrap gap-2 mb-8"
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.15 }}
+          >
+            <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium bg-[#f4f4f5] dark:bg-white/[0.06] text-[#52525b] dark:text-[#a1a1aa] border border-black/[0.07] dark:border-white/[0.08]">
+              6+ years building products
+            </span>
+          </motion.div>
+
+          <motion.a
+            href="#contact"
+            className="btn-primary self-start group inline-flex"
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            Let's connect
+            <FiArrowRight className="group-hover:translate-x-0.5 transition-transform" />
+          </motion.a>
+
         </div>
       </div>
     </section>

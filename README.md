@@ -1,6 +1,6 @@
-# Josh Macaraig Portfolio
+# Josh Macaraig — Portfolio
 
-This is the personal portfolio website of Josh Macaraig, a Full-Stack Developer specializing in low-code platforms and traditional development.
+Personal site for showcasing my product engineering work, shipped projects, and creative playgrounds (games, experiments, and builds). It highlights my journey, skills, and hands-on demos such as the React arcade.
 
 ## Technologies Used
 
@@ -12,7 +12,9 @@ This is the personal portfolio website of Josh Macaraig, a Full-Stack Developer 
 
 ## Project Structure
 
-The project follows a modular structure with components organized by section and a separation of data from the UI components.
+- `src/components` — Each major section (Hero, About, Experience, Skills, Projects, Playground, Contact) lives in its own folder.
+- `src/data` — Centralized data for personal info, skills, and project metadata.
+- `src/components/Games` — Mini games and experiments that are also showcased inside the app.
 
 ## Getting Started
 
@@ -53,11 +55,9 @@ npm run deploy
 
 ## Customize
 
-To customize this portfolio:
-
-1. Update the data files in the `src/data` directory
-2. Replace placeholder images in the `public/assets/images` directory
-3. Modify component styles as needed
+1. Update `src/data/personal.js`, `skills.js`, and `projects.js` with your own information.
+2. Swap out images or add new ones inside `public/assets/images`.
+3. Adjust components or styling inside `src/components` / `src/styles` to make it your own.
 
 ## License
 

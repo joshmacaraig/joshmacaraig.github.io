@@ -1,77 +1,30 @@
 const personalData = {
   name: "Josh Macaraig",
-  title: "WeWeb + Xano Developer",
-  tagline: "Launch Your MVP in 7 Days, Not 7 Weeks",
-  summary: "I build web apps, dashboards, and MVPs for indie hackers and startups globally using WeWeb + Xano. Fast delivery. Transparent pricing. Timezone-flexible.",
-  positioning: "I launch MVPs in 7 days for indie hackers who can't afford $8k agencies but need better than Fiverr.",
+  title: "Product Engineer & Systems Designer",
+  tagline: "Building calm, minimalist tools that still feel high-end.",
+  summary:
+    "I craft dashboards, internal platforms, and creative experiments that balance utility with a light, modern aesthetic. Over the last 6 years, I've partnered with teams across SaaS, operations, real estate, and events to ship software that people actually enjoy using.",
+  positioning: "Currently exploring product engineering roles and collaborations that value thoughtful UX + technical depth.",
+  availability: "Open to remote roles & collaborations",
   email: "bajejosh@gmail.com",
-  calendly: "https://calendly.com/joshmacaraig/free-mvp-strategy-audit",
   github: "https://github.com/joshmacaraig",
   linkedin: "https://linkedin.com/in/joshmacaraig",
   twitter: "https://twitter.com/macaraigjosh",
   memoryAthleteProfile: "https://global-memory.org/athlete.php?id=14786",
-  aboutMe: `I help indie hackers and bootstrapped startups worldwide launch fast. Using WeWeb + Xano, I deliver MVPs in days instead of months—at a fraction of traditional agency costs.
+  stats: [
+    { label: "Years building products", value: "6+" },
+    { label: "Projects shipped", value: "11" }
+  ],
+  focusAreas: [
+    "Product strategy & prototyping",
+    "Design systems & dashboards",
+    "Creative coding & games"
+  ],
+  aboutMe: `I'm a multi-disciplinary builder who enjoys turning early sketches into polished, reliable tools. I jump between modern web stacks (React, Node, Tailwind) and low-code systems (WeWeb, Xano, Wized) depending on how fast we need to move.
 
-I work with clients across the US, Europe, and beyond. English-first communication, timezone-flexible scheduling, and direct access to a developer who understands both no-code efficiency and traditional development precision.
+Most of my work lives inside operations teams: dashboards for area managers, housing platforms for agents, call grading systems, and community portals for churches and HOAs. I'm usually the one bridging product requirements, UX, and the actual build.
 
-Beyond coding, I'm a memory athlete and AI enthusiast, constantly exploring ways to leverage technology to enhance productivity and create innovative solutions.`,
-  services: {
-    starter: {
-      name: "Speed Starter MVP",
-      price: "$1,500",
-      timeline: "5 days",
-      features: [
-        "1-3 core features",
-        "Basic UI (template-based)",
-        "Xano backend with authentication",
-        "1 integration (Stripe, email, etc.)",
-        "Deployed & live"
-      ]
-    },
-    sprint: {
-      name: "7-Day MVP Sprint",
-      price: "$2,500",
-      timeline: "7 days",
-      popular: true,
-      features: [
-        "5-7 key features",
-        "Custom UI design",
-        "Xano backend with auth & permissions",
-        "2-3 integrations",
-        "Basic admin panel",
-        "Deployed with custom domain",
-        "1 week of bug fixes"
-      ],
-      guarantee: "If it takes longer than 7 days, 10% refund per extra day"
-    },
-    pro: {
-      name: "Pro App Build",
-      price: "$4,500",
-      timeline: "2-3 weeks",
-      features: [
-        "Full feature set (10+ features)",
-        "Custom UI/UX design",
-        "Advanced Xano backend (workflows, webhooks)",
-        "5+ integrations",
-        "User analytics setup",
-        "Testing & QA",
-        "Documentation",
-        "2 weeks of support"
-      ]
-    },
-    retainer: {
-      name: "Ongoing Retainer",
-      price: "$750/month",
-      timeline: "Monthly",
-      features: [
-        "10 hours/month of development",
-        "Priority support (4-hour response)",
-        "Monthly feature additions",
-        "Bug fixes & monitoring",
-        "Performance optimization"
-      ]
-    }
-  }
+Outside of client work you'll find me experimenting with playful interfaces—memory games, chess engines, and mini apps that explore sound, animation, and AI-assisted workflows. Those experiments keep my craft sharp and remind me to add moments of delight even in serious tools.`
 };
 
 export default personalData;

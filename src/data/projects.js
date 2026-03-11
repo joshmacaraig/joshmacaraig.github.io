@@ -1,130 +1,150 @@
 const projects = [
   {
     id: 0,
-    title: "SaaS Dashboard MVP Demo",
-    period: "2025",
-    stack: ["WeWeb", "Xano", "Stripe", "SendGrid"],
-    description: "A fully functional SaaS dashboard built in 48 hours to demonstrate rapid MVP development capabilities. Features user management, subscription billing, and email notifications.",
-    features: [
-      "User authentication & role-based permissions",
-      "CRUD operations with data tables & filtering",
-      "Stripe subscription integration with webhooks",
-      "Automated email notifications via SendGrid",
-      "Responsive modern dashboard UI",
-      "Admin panel with analytics & user management"
+    title: "Area Operations Dashboard",
+    type: "Internal Platform",
+    stack: ["React", "WeWeb", "Xano", "Tailwind"],
+    description:
+      "A command center for area managers to track staff activity, timeclocks, logs, approvals, and operational reports in one calm UI.",
+    highlights: [
+      "Real-time presence indicators for field teams",
+      "Approval workflows for time-off and incident reports",
+      "Exportable analytics for leadership stand-ups"
     ],
-    achievements: [
-      "Built in 48 hours from scratch",
-      "Production-ready with error handling",
-      "Modern, professional UI/UX design",
-      "Fully responsive on all devices"
-    ],
-    image: "/assets/images/saas-demo.jpg",
-    link: "#", // TODO: Add live demo link once deployed
-    demoAvailable: true,
-    featured: true,
-    techStack: "WeWeb + Xano",
-    buildTime: "48 hours"
-  },
-  {
-    id: 2,
-    title: "Housing Solutions Platform",
-    period: "2024",
-    stack: ["Webflow", "Wized", "Xano", "SendGrid", "Twilio", "Google Auth", "Xero"],
-    description: "A comprehensive property management platform streamlining deal management, applicant tracking, and provider coordination.",
-    features: [
-      "Deal management system with pipeline tracking",
-      "Applicant tracking & communication",
-      "Property provider portal & directory",
-      "Automated email & SMS notifications",
-      "Google OAuth integration for secure login",
-      "Xero accounting integration for invoicing"
-    ],
-    achievements: [
-      "Reduced manual workflow by 60%",
-      "Improved client acquisition by 40%",
-      "Streamlined operations across 3 departments"
-    ],
-    image: "/assets/images/housing-project.jpg",
-    link: "#",
-    techStack: "Webflow + Xano",
     featured: true
   },
   {
     id: 1,
-    title: "Game Arcade Collection 🎮",
-    period: "2025",
-    stack: ["React", "Framer Motion", "Web Audio API", "Tailwind CSS"],
-    description: "A collection of three engaging browser games showcasing interactive UI development and game mechanics.",
-    features: [
-      "Slap the Boss - Stress relief with satisfying feedback",
-      "Tic Tac Toe - Unbeatable AI with minimax algorithm", 
-      "Memory Game - Multiple themes & difficulty levels",
-      "Responsive design with touch & keyboard support",
-      "Optimized performance with efficient state management"
+    title: "Community Management Platform",
+    type: "Client Dashboard",
+    stack: ["WeWeb", "Xano", "SendGrid", "Chart.js"],
+    description:
+      "Dashboard for community managers to handle support tickets, broadcasts, and resident activity with context-rich reporting.",
+    highlights: [
+      "Multi-tenant reporting with drill-downs",
+      "Support workflow automation with email notifications",
+      "Activity tracking for HOA boards and committees"
     ],
-    achievements: [
-      "Built with React and modern web technologies",
-      "Mobile-optimized with accessibility features",
-      "Smooth animations and audio feedback"
+    featured: true
+  },
+  {
+    id: 2,
+    title: "Sales Call Grading System",
+    type: "Insights Platform",
+    stack: ["React", "Node", "Postgres", "OpenAI"],
+    description:
+      "Review and scoring platform for sales calls with rich transcripts, AI-assisted grading, and performance insights.",
+    highlights: [
+      "Custom rubric builder for QA teams",
+      "Scorecards with trend analysis",
+      "AI suggestions to accelerate grading"
     ],
-    image: "/assets/images/slap-boss.jpg",
-    link: "/games",
-    isGame: true,
-    category: "Personal Project"
+    featured: true
   },
   {
     id: 3,
-    title: "Trash Butler Management Suite",
-    period: "2020-2022",
-    stack: ["Knack", "Integromat", "Tadabase"],
-    description: "A comprehensive operations management system for waste management services across multiple properties.",
-    components: [
-      "Area Command Center for regional oversight",
-      "Butler Hub with clock-in/out & route tracking",
-      "Community Concierge for resident communication"
-    ],
-    impact: [
-      "Enhanced operational efficiency by 45%",
-      "Improved service delivery tracking",
-      "Real-time reporting for 50+ properties"
-    ],
-    image: "/assets/images/trash-butler.jpg",
-    link: "#",
-    category: "Business Application"
+    title: "Housing Application Management",
+    type: "Multi-dashboard System",
+    stack: ["WeWeb", "Xano", "Webflow", "SendGrid", "Twilio", "OpenAI"],
+    description:
+      "Dashboards for agents to process housing applicants, collaborate with caseworkers, and track case progress. Integrated OpenAI to review past communications and applicant details.",
+    highlights: [
+      "Role-specific dashboards for agents and managers",
+      "SMS + email updates via Twilio & SendGrid",
+      "AI-powered review of past communications and applicant history"
+    ]
   },
   {
     id: 4,
-    title: "Enterprise Printing System",
-    period: "2020",
-    stack: ["Laravel", "Vue.js", "MySQL"],
-    description: "Integrated ERP system for a Japanese manufacturing company connecting sales, accounting, and production departments.",
-    contribution: "Led backend development and API integration across departments",
-    impact: [
-      "Unified 3 separate systems into one platform",
-      "Reduced data entry errors by 70%",
-      "Automated invoice generation and inventory tracking"
-    ],
-    image: "/assets/images/printing-system.jpg",
-    link: "#",
-    category: "Enterprise Solution"
+    title: "Tenant Transfer Matching",
+    type: "Matching Engine",
+    stack: ["WeWeb", "Xano", "SendGrid", "Twilio"],
+    description:
+      "Matching logic that pairs tenants with available properties, supporting direct transfers, two-way swaps, and complex chains.",
+    highlights: [
+      "Automated compatibility scoring",
+      "Multi-party workflow management",
+      "SMS + email notifications throughout process"
+    ]
   },
   {
     id: 5,
-    title: "Developer Directory Platform",
-    period: "2020",
-    stack: ["Vue.js", "PHP", "MySQL"],
-    description: "A matchmaking platform connecting developers with clients based on skills, experience, and project requirements.",
-    role: "Led backend development and database architecture",
-    features: [
-      "Developer profile management",
-      "Skill-based matching algorithm",
-      "Project posting & bidding system",
-      "Integrated messaging & notifications"
+    title: "Internal Communication Platform",
+    type: "Company Tool",
+    stack: ["Knack", "Integromat", "SendGrid"],
+    description:
+      "Announcements, updates, and team communication hub for distributed operations teams.",
+    highlights: [
+      "Segmented announcements per department",
+      "Read receipts & engagement tracking",
+      "Automated digests sent daily"
+    ]
+  },
+  {
+    id: 6,
+    title: "AI Call Analysis Tool",
+    type: "AI Workflow",
+    stack: ["React", "Xano", "OpenAI"],
+    description:
+      "Call grading platform that ingests transcripts, runs AI analysis, and assists QA reps with scoring suggestions.",
+    highlights: [
+      "Prompt-engineered summaries of each call",
+      "Outlier detection for coaching sessions",
+      "Secure data pipeline with audit logs"
+    ]
+  },
+  {
+    id: 7,
+    title: "Website Builder",
+    type: "Personal Project · Ongoing",
+    stack: ["Nuxt", "React", "Supabase"],
+    description:
+      "An ongoing personal project — a site builder that lets users create and publish custom websites with their own design preferences and content.",
+    highlights: [
+      "Custom component system with live preview",
+      "Supabase-backed auth and storage",
+      "Continuously evolving as a personal experiment"
     ],
-    image: "/assets/images/dev-directory.jpg",
-    link: "#",
-    category: "Web Platform"
+    ongoing: true
+  },
+  {
+    id: 8,
+    title: "Private Event Media Sharing",
+    type: "Mobile / Web App",
+    stack: ["React", "Expo", "Supabase"],
+    description:
+      "Media sharing app for events with controlled guest access, moderation, and lightweight editing.",
+    highlights: [
+      "Invite-only galleries with expiring links",
+      "Automatic compression + quality presets",
+      "Web + mobile parity with offline-friendly queue"
+    ]
+  },
+  {
+    id: 9,
+    title: "Church Community Platform",
+    type: "Internal Tool",
+    stack: ["React", "Supabase", "Claude MCP"],
+    description:
+      "Portal for prayer requests, communications, and a searchable song lyric + chords library with live transposition. Built with Claude MCP integration.",
+    highlights: [
+      "Chord transposition engine per instrument",
+      "Moderation queue for prayer requests",
+      "Claude MCP integration for AI-assisted community features"
+    ]
+  },
+  {
+    id: 10,
+    title: "Car Rental Management System",
+    type: "Operations App",
+    stack: ["React", "Supabase"],
+    description:
+      "Fleet, booking, and operations portal for a regional car rental business.",
+    highlights: [
+      "Vehicle status tracking with maintenance logs",
+      "Booking + billing workflows",
+      "Driver assignment + route planning"
+    ]
   }
 ];
 

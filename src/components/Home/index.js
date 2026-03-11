@@ -1,25 +1,19 @@
 import React from 'react';
 import Hero from '../Hero';
-import TechStack from '../TechStack';
-import TargetAudience from '../TargetAudience';
-import HowItWorks from '../HowItWorks';
-import Services from '../Services';
+import About from '../About';
+import Skills from '../Skills';
 import Projects from '../Projects';
-import Testimonials from '../Testimonials';
-import FAQ from '../FAQ';
+import Integrations from '../Integrations';
 import Contact from '../Contact';
 
 const Home = () => {
   return (
     <>
       <Hero />
-      <TechStack />
-      <TargetAudience />
-      <HowItWorks />
-      <Services />
+      <About />
       <Projects />
-      <Testimonials />
-      <FAQ />
+      <Skills />
+      <Integrations />
       <Contact />
     </>
   );

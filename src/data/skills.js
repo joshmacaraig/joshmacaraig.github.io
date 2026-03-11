@@ -1,23 +1,23 @@
 const skills = [
   {
-    category: "Low-Code Development",
-    items: ["Xano", "Webflow", "WeWeb", "Wized", "Knack"]
+    category: "Product Craft",
+    items: ["Product strategy", "Design systems", "UX writing", "Rapid prototyping"]
   },
   {
-    category: "Traditional Development",
-    items: ["JavaScript", "Vue.js", "Laravel", "PHP", "MySQL"]
+    category: "Frontend",
+    items: ["React / Next.js", "Nuxt", "Tailwind CSS", "Framer Motion", "Expo"]
   },
   {
-    category: "Integration & Automation",
-    items: ["Make (Integromat)", "API Development", "Twilio", "SendGrid", "Xero"]
+    category: "Backend & Data",
+    items: ["Node & Express", "Supabase", "Xano", "Postgres / MySQL", "API architecture"]
   },
   {
-    category: "AI & Special Skills",
-    items: ["AI Integration", "LLM Prompt Engineering", "Memory Techniques", "Memory Sports"]
+    category: "Low-Code / Hybrid",
+    items: ["WeWeb", "Webflow", "Wized", "Knack"]
   },
   {
-    category: "Additional",
-    items: ["Salesforce B2C Commerce Developer (Certified)"]
+    category: "AI & Automation",
+    items: ["OpenAI APIs", "Claude / MCP", "Zapier & n8n", "Twilio", "SendGrid"]
   }
 ];
 

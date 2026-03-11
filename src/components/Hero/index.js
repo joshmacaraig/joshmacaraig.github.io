@@ -1,157 +1,149 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { FiArrowRight, FiArrowDown } from 'react-icons/fi';
+import { FiArrowRight, FiArrowDown, FiLinkedin } from 'react-icons/fi';
 import personalData from '../../data/personal';
 
 const Hero = () => {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start start", "end start"]
+    offset: ['start start', 'end start'],
   });
-  
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.95]);
+  const opacity = useTransform(scrollYProgress, [0, 0.45], [1, 0]);
+  const y = useTransform(scrollYProgress, [0, 0.45], [0, 40]);
 
   return (
-    <section 
+    <section
       ref={containerRef}
-      className="min-h-screen flex items-center justify-center relative overflow-hidden bg-white dark:bg-[#0a0a0a]"
+      className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-[#f5f5f7] dark:bg-[#09090b]"
     >
-      {/* Subtle Grid Background */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:64px_64px]"></div>
-      
-      {/* Gradient Orb */}
-      <motion.div 
-        className="absolute top-1/4 -right-1/4 w-96 h-96 bg-gradient-to-br from-blue-400/20 to-purple-600/20 rounded-full blur-3xl"
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.3, 0.5, 0.3],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      />
-      
-      <motion.div 
-        className="container-wrapper z-10 py-20"
-        style={{ opacity, scale }}
+      {/* Dot-grid texture */}
+      <div className="absolute inset-0 dot-grid opacity-60 dark:opacity-100" />
+
+      {/* Violet glow – top right */}
+      <div className="absolute -top-40 -right-40 w-[560px] h-[560px] rounded-full bg-violet-500/[0.08] dark:bg-violet-500/[0.12] blur-[100px] pointer-events-none" />
+      {/* Warm glow – bottom left */}
+      <div className="absolute -bottom-32 -left-32 w-[400px] h-[400px] rounded-full bg-purple-400/[0.06] dark:bg-purple-400/[0.08] blur-[80px] pointer-events-none" />
+
+      <motion.div
+        style={{ opacity, y }}
+        className="container-wrapper relative z-10 pt-32 pb-24"
       >
-        <div className="max-w-6xl mx-auto text-center">
-          {/* Badge */}
-          <motion.div
-            className="mb-8"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.19, 1, 0.22, 1] }}
-          >
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 text-sm font-medium">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
-              </span>
-              Available for new projects
+        {/* Status badge */}
+        <motion.div
+          className="mb-10"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: [0.19, 1, 0.22, 1] }}
+        >
+          <span className="badge">
+            <span className="relative flex h-2 w-2 shrink-0">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
             </span>
-          </motion.div>
+            {personalData.availability}
+          </span>
+        </motion.div>
 
-          {/* Main Headline */}
-          <motion.h1 
-            className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-[1.1] tracking-tight"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1, ease: [0.19, 1, 0.22, 1] }}
-          >
-            <span className="block">Ship your MVP</span>
-            <span className="block">in days,</span>
-            <span className="block gradient-text">not months.</span>
-          </motion.h1>
+        {/* Name display */}
+        <motion.div
+          className="mb-6"
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.1, ease: [0.19, 1, 0.22, 1] }}
+        >
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-black leading-[0.95] tracking-[-0.03em] text-[#09090b] dark:text-white">
+            {personalData.name.split(' ')[0]}
+            <br />
+            <span className="text-violet-600 dark:text-violet-400">
+              {personalData.name.split(' ')[1]}.
+            </span>
+          </h1>
+        </motion.div>
 
-          {/* Subheadline */}
-          <motion.p 
-            className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-12 max-w-3xl mx-auto font-light"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3, ease: [0.19, 1, 0.22, 1] }}
-          >
-            I build web apps and MVPs for indie hackers using WeWeb + Xano.
-            Fast delivery. Transparent pricing. Zero BS.
-          </motion.p>
+        {/* Role */}
+        <motion.p
+          className="text-xl md:text-2xl font-medium text-[#52525b] dark:text-[#a1a1aa] mb-6 tracking-tight"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.25, ease: [0.19, 1, 0.22, 1] }}
+        >
+          {personalData.title}
+        </motion.p>
 
-          {/* CTAs */}
-          <motion.div 
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5, ease: [0.19, 1, 0.22, 1] }}
-          >
-            <motion.a 
-              href={personalData.calendly}
+        {/* Description */}
+        <motion.p
+          className="text-base md:text-lg text-[#71717a] dark:text-[#71717a] max-w-xl leading-relaxed mb-10"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.35, ease: [0.19, 1, 0.22, 1] }}
+        >
+          I build dashboards, operations platforms, and AI-assisted workflows that teams actually enjoy using. 6+ years bridging design, code, and real-world operations.
+        </motion.p>
+
+        {/* CTAs + social */}
+        <motion.div
+          className="flex flex-col sm:flex-row items-start gap-4 mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.45, ease: [0.19, 1, 0.22, 1] }}
+        >
+          <a href={`https://mail.google.com/mail/?view=cm&to=${personalData.email}`} target="_blank" rel="noopener noreferrer" className="btn-primary group">
+            Let's work together
+            <FiArrowRight className="group-hover:translate-x-0.5 transition-transform" />
+          </a>
+          <a href="#work" className="btn-secondary group">
+            See my work
+            <FiArrowDown className="group-hover:translate-y-0.5 transition-transform" />
+          </a>
+
+          <div className="flex items-center gap-1 sm:ml-2">
+            <a
+              href={personalData.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary group"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              className="p-2.5 rounded-xl text-[#71717a] hover:text-[#09090b] dark:hover:text-white hover:bg-black/[0.06] dark:hover:bg-white/[0.08] transition-all"
+              aria-label="LinkedIn"
             >
-              Book a free audit
-              <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
-            </motion.a>
-            
-            <motion.a 
-              href="#work"
-              className="btn-secondary group"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              View my work
-              <FiArrowDown className="group-hover:translate-y-1 transition-transform" />
-            </motion.a>
-          </motion.div>
+              <FiLinkedin className="w-4.5 h-4.5" />
+            </a>
+          </div>
+        </motion.div>
 
-          {/* Trust Indicators */}
-          <motion.div 
-            className="flex flex-wrap items-center justify-center gap-8 text-sm text-gray-500 dark:text-gray-500"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
-          >
-            <div className="flex items-center gap-2">
-              <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-              </svg>
-              <span>7-day delivery</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-              </svg>
-              <span>From $1,500</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-              </svg>
-              <span>Fixed pricing</span>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <motion.div 
-          className="absolute bottom-12 left-1/2 transform -translate-x-1/2"
+        {/* Stats row */}
+        <motion.div
+          className="flex flex-wrap gap-x-10 gap-y-4 pt-8 border-t border-black/[0.07] dark:border-white/[0.07]"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 0.5 }}
+          transition={{ duration: 0.7, delay: 0.6 }}
         >
-          <motion.div 
-            animate={{ y: [0, 8, 0] }} 
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="flex flex-col items-center gap-2 text-gray-400 dark:text-gray-600"
-          >
-            <span className="text-xs font-medium">Scroll</span>
-            <FiArrowDown className="w-4 h-4" />
-          </motion.div>
+          {personalData.stats?.map((stat) => (
+            <div key={stat.label}>
+              <div className="text-2xl font-black text-[#09090b] dark:text-white tracking-tight">
+                {stat.value}
+              </div>
+              <div className="text-xs text-[#71717a] dark:text-[#71717a] mt-0.5 uppercase tracking-[0.1em] font-medium">
+                {stat.label}
+              </div>
+            </div>
+          ))}
+        </motion.div>
+      </motion.div>
+
+      {/* Scroll hint */}
+      <motion.div
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2, duration: 0.5 }}
+      >
+        <motion.div
+          animate={{ y: [0, 6, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+          className="flex flex-col items-center gap-1.5 text-[#a1a1aa]"
+        >
+          <span className="text-[10px] font-semibold uppercase tracking-[0.15em]">Scroll</span>
+          <FiArrowDown className="w-3.5 h-3.5" />
         </motion.div>
       </motion.div>
     </section>

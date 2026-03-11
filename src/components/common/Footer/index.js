@@ -3,38 +3,38 @@ import { FiLinkedin, FiMail } from 'react-icons/fi';
 import personalData from '../../../data/personal';
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
+  const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-[#0a0a0a] py-12">
+    <footer className="border-t border-black/[0.07] dark:border-white/[0.07] bg-white dark:bg-[#09090b] py-10">
       <div className="container-wrapper">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          {/* Brand */}
-          <div className="text-center md:text-left">
-            <p className="text-sm text-gray-600 dark:text-gray-400">
-              © {currentYear} {personalData.name}. Building MVPs that matter.
-            </p>
-          </div>
-          
-          {/* Social Links */}
-          <div className="flex items-center gap-6">
-            <a 
-              href={personalData.linkedin} 
-              target="_blank" 
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-5">
+
+          <p className="text-sm text-[#a1a1aa]">
+            © {year} {personalData.name}
+          </p>
+
+          <div className="flex items-center gap-1">
+            <a
+              href={personalData.linkedin}
+              target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
+              className="p-2.5 rounded-lg text-[#a1a1aa] hover:text-[#09090b] dark:hover:text-white hover:bg-black/[0.05] dark:hover:bg-white/[0.07] transition-all"
               aria-label="LinkedIn"
             >
-              <FiLinkedin className="w-5 h-5" />
+              <FiLinkedin className="w-4 h-4" />
             </a>
-            <a 
-              href={`mailto:${personalData.email}`}
-              className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
+            <a
+              href={`https://mail.google.com/mail/?view=cm&to=${personalData.email}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2.5 rounded-lg text-[#a1a1aa] hover:text-[#09090b] dark:hover:text-white hover:bg-black/[0.05] dark:hover:bg-white/[0.07] transition-all"
               aria-label="Email"
             >
-              <FiMail className="w-5 h-5" />
+              <FiMail className="w-4 h-4" />
             </a>
           </div>
+
         </div>
       </div>
     </footer>
