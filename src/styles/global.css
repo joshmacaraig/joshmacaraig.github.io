@@ -17,9 +17,8 @@
   }
 
   body {
-    @apply bg-[#f5f5f7] dark:bg-[#09090b] text-[#09090b] dark:text-[#fafafa];
+    @apply bg-[#09090b] text-[#fafafa];
     font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
-    transition: background-color 0.4s var(--ease-in-out), color 0.4s var(--ease-in-out);
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -31,25 +30,25 @@
 
   /* ── Layout ─────────────────────────────────────────── */
   .container-wrapper {
-    @apply max-w-6xl mx-auto px-6 sm:px-8 lg:px-12;
+    @apply max-w-6xl mx-auto px-5 sm:px-8 lg:px-12;
   }
 
   .section-padding {
-    @apply py-24 md:py-32;
+    @apply py-16 md:py-24 lg:py-32;
   }
 
   /* ── Typography ──────────────────────────────────────── */
   .gradient-text {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+    background-image: linear-gradient(135deg, #0284c7 0%, #38bdf8 100%);
   }
 
   .dark .gradient-text {
-    background-image: linear-gradient(135deg, #a78bfa 0%, #c084fc 100%);
+    background-image: linear-gradient(135deg, #38bdf8 0%, #7dd3fc 100%);
   }
 
   .section-label {
-    @apply text-[11px] font-semibold uppercase tracking-[0.2em] text-violet-600 dark:text-violet-400;
+    @apply text-[11px] font-semibold uppercase tracking-[0.2em] text-sky-600 dark:text-sky-400;
   }
 
   /* ── Cards ───────────────────────────────────────────── */
@@ -146,11 +145,11 @@
 .dark ::-webkit-scrollbar-thumb:hover { background: #52525b; }
 
 /* ── Selection ───────────────────────────────────────── */
-::selection { background: #7c3aed22; color: inherit; }
+::selection { background: #38bdf822; color: inherit; }
 
 /* ── Focus ───────────────────────────────────────────── */
 button:focus-visible, a:focus-visible {
-  @apply outline-none ring-2 ring-offset-2 ring-violet-500;
+  @apply outline-none ring-2 ring-offset-2 ring-sky-500;
 }
 
 /* ── Marquee ─────────────────────────────────────────── */
@@ -173,4 +172,40 @@ button:focus-visible, a:focus-visible {
 .dark .dot-grid {
   background-image: radial-gradient(circle, #27272a 1px, transparent 1px);
   background-size: 28px 28px;
+}
+
+/* ── Section pointer pass-through ───────────────────── */
+/* Lets mouse events reach the fixed Spline background
+   through transparent empty areas, while keeping all
+   content (buttons, links, cards) fully interactive   */
+.section-passthrough {
+  pointer-events: none;
+}
+.section-passthrough > * {
+  pointer-events: auto;
+}
+
+/* ── Holographic card ────────────────────────────────── */
+.holo-card {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  will-change: transform;
+  transform-style: preserve-3d;
+}
+
+.holo-card .holo-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background: radial-gradient(
+    circle at var(--x, 50%) var(--y, 50%),
+    rgba(56, 189, 248, 0.10) 0%,
+    transparent 65%
+  );
+}
+
+.holo-card:hover .holo-glow {
+  opacity: 1;
 }

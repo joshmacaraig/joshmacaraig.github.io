@@ -1,248 +1,307 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FiCheck, FiArrowRight, FiZap, FiStar } from 'react-icons/fi';
+import NumberFlow from '@number-flow/react';
+import { Card, CardContent, CardHeader } from '../ui/card';
+import { VerticalCutReveal } from '../ui/vertical-cut-reveal';
+import { cn } from '../../lib/utils';
 import personalData from '../../data/personal';
 
-const Services = () => {
-  const { services } = personalData;
+const plans = [
+  {
+    name: 'Discovery',
+    description: 'For founders and teams exploring a product idea or system redesign. Fast, focused, actionable.',
+    projectPrice: 800,
+    retainerPrice: 450,
+    buttonText: 'Book a sprint',
+    buttonVariant: 'outline',
+    includes: [
+      'What you get:',
+      'Product audit & gap analysis',
+      'Wireframes & user flows',
+      'Tech stack recommendation',
+      '1-week turnaround',
+      '1 async review session',
+      'Delivered via Notion doc',
+    ],
+  },
+  {
+    name: 'Full Build',
+    description: 'For teams ready to ship a dashboard, internal tool, or workflow system end-to-end.',
+    projectPrice: 4500,
+    retainerPrice: 1500,
+    buttonText: 'Start a project',
+    buttonVariant: 'default',
+    popular: true,
+    includes: [
+      'Everything in Discovery, plus:',
+      'Full-stack delivery (React + Supabase/Xano)',
+      'Design system & component library',
+      'API & automation integrations',
+      'Mobile-responsive & accessible',
+      'Source code + docs handoff',
+      'Post-launch support (2 weeks)',
+    ],
+  },
+  {
+    name: 'Ongoing Partner',
+    description: 'For growing teams who need a reliable product engineer embedded in their operation.',
+    projectPrice: 2800,
+    retainerPrice: 2200,
+    buttonText: "Let's talk",
+    buttonVariant: 'outline',
+    includes: [
+      'Everything in Full Build, plus:',
+      'Dedicated engineer on-call',
+      'Weekly planning check-ins',
+      'Slack access + priority support',
+      'Up to 60 hrs / month',
+      'Feature iterations & integrations',
+      'Ongoing code reviews & QA',
+    ],
+  },
+];
 
-  const packages = [
-    {
-      key: 'starter',
-      data: services.starter,
-      icon: FiZap,
-      description: 'Perfect for validating your idea quickly'
-    },
-    {
-      key: 'sprint',
-      data: services.sprint,
-      icon: FiStar,
-      description: 'Launch a complete MVP ready for users',
-      featured: true
-    },
-    {
-      key: 'pro',
-      data: services.pro,
-      icon: FiStar,
-      description: 'Full-featured app with everything you need'
-    }
-  ];
+const PricingSwitch = ({ onSwitch }) => {
+  const [selected, setSelected] = useState('0');
+
+  const handleSwitch = (value) => {
+    setSelected(value);
+    onSwitch(value);
+  };
 
   return (
-    <section id="services" className="section-padding bg-white dark:bg-[#0a0a0a] relative overflow-hidden">
-      {/* Grid Background */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:64px_64px]"></div>
-      
+    <div className="flex justify-center">
+      <div className="relative z-10 mx-auto flex w-fit rounded-full bg-neutral-900 border border-neutral-700/60 p-1">
+        {['Project', 'Retainer'].map((label, idx) => {
+          const val = String(idx);
+          const isActive = selected === val;
+          return (
+            <button
+              key={label}
+              onClick={() => handleSwitch(val)}
+              className={cn(
+                'relative z-10 h-10 rounded-full sm:px-6 px-4 text-sm font-medium transition-colors',
+                isActive ? 'text-white' : 'text-neutral-400 hover:text-neutral-200'
+              )}
+            >
+              {isActive && (
+                <motion.span
+                  layoutId="pricing-switch"
+                  className="absolute inset-0 rounded-full border-[3px] border-sky-600 bg-gradient-to-t from-sky-700 to-sky-500 shadow-lg shadow-sky-900/50"
+                  transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+                />
+              )}
+              <span className="relative">{label}</span>
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 28, filter: 'blur(6px)' },
+  visible: (i) => ({
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)',
+    transition: { delay: i * 0.1, duration: 0.55, ease: [0.19, 1, 0.22, 1] },
+  }),
+};
+
+const Services = () => {
+  const [isRetainer, setIsRetainer] = useState(false);
+
+  const togglePricing = (value) => setIsRetainer(parseInt(value) === 1);
+
+  return (
+    <section
+      id="services"
+      className="relative overflow-hidden bg-[#060609] py-24 sm:py-32"
+    >
+      {/* CSS grid pattern */}
+      <div
+        className="absolute inset-0 z-0 pointer-events-none"
+        style={{
+          backgroundImage:
+            'linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px)',
+          backgroundSize: '64px 64px',
+        }}
+      />
+
+      {/* Radial vignette over grid */}
+      <div
+        className="absolute inset-0 z-0 pointer-events-none"
+        style={{
+          background: 'radial-gradient(ellipse 90% 50% at 50% 0%, transparent 0%, #060609 75%)',
+        }}
+      />
+
+      {/* Violet glow top-center */}
+      <div
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] z-0 pointer-events-none"
+        style={{
+          background: 'radial-gradient(ellipse at center top, rgba(124,58,237,0.15) 0%, transparent 65%)',
+        }}
+      />
+
       <div className="container-wrapper relative z-10">
-        {/* Section Header */}
-        <div className="max-w-3xl mx-auto text-center mb-20">
-          <motion.span
-            className="badge-primary mb-4"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            Transparent Pricing
-          </motion.span>
-          
-          <motion.h2 
-            className="text-4xl md:text-6xl font-bold mb-6"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            Choose your{' '}
-            <span className="gradient-text">launch speed</span>
-          </motion.h2>
-          
-          <motion.p 
-            className="text-xl text-gray-600 dark:text-gray-400 font-light"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            No hidden fees. No surprises. Just straightforward pricing for indie hackers.
-          </motion.p>
+
+        {/* Section label */}
+        <motion.p
+          className="text-center text-[11px] font-semibold uppercase tracking-[0.2em] text-sky-400 mb-5"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          Services & Pricing
+        </motion.p>
+
+        {/* Heading with VerticalCutReveal */}
+        <div className="text-center mb-5">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white leading-tight tracking-tight">
+            <VerticalCutReveal
+              splitBy="words"
+              staggerDuration={0.1}
+              staggerFrom="first"
+              containerClassName="justify-center"
+              transition={{ type: 'spring', stiffness: 260, damping: 40, delay: 0.1 }}
+            >
+              Plans built for real
+            </VerticalCutReveal>{' '}
+            <VerticalCutReveal
+              splitBy="words"
+              staggerDuration={0.1}
+              staggerFrom="first"
+              containerClassName="justify-center"
+              elementLevelClassName="text-sky-400"
+              transition={{ type: 'spring', stiffness: 260, damping: 40, delay: 0.35 }}
+            >
+              product teams
+            </VerticalCutReveal>
+          </h2>
         </div>
 
-        {/* Pricing Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16 max-w-6xl mx-auto">
-          {packages.map(({ key, data, icon: Icon, description, featured }, index) => (
+        <motion.p
+          className="text-center text-neutral-400 max-w-lg mx-auto mb-10 text-sm sm:text-base leading-relaxed"
+          initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.55, delay: 0.15 }}
+        >
+          Whether you need a focused sprint or a long-term engineering partner,
+          I work lean and ship fast. Toggle between project and retainer pricing.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mb-14"
+        >
+          <PricingSwitch onSwitch={togglePricing} />
+        </motion.div>
+
+        {/* Pricing cards */}
+        <div className="grid md:grid-cols-3 gap-4 max-w-5xl mx-auto">
+          {plans.map((plan, index) => (
             <motion.div
-              key={key}
-              className={`pricing-card relative ${featured ? 'featured md:-mt-8 md:mb-8' : ''}`}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              key={plan.name}
+              custom={index}
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="h-full"
             >
-              {/* Popular Badge */}
-              {featured && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 px-4 py-1 bg-blue-600 text-white text-xs font-semibold rounded-full">
-                  Most Popular
-                </div>
-              )}
-
-              {/* Icon */}
-              <div className="mb-6">
-                <div className={`w-12 h-12 rounded-2xl flex items-center justify-center ${
-                  featured 
-                    ? 'bg-white/10 dark:bg-black/10' 
-                    : 'bg-gray-100 dark:bg-gray-900'
-                }`}>
-                  <Icon className={`w-6 h-6 ${
-                    featured 
-                      ? 'text-white dark:text-black' 
-                      : 'text-gray-700 dark:text-gray-300'
-                  }`} />
-                </div>
-              </div>
-
-              {/* Package Info */}
-              <h3 className={`text-2xl font-bold mb-2 ${
-                featured ? 'text-white dark:text-black' : ''
-              }`}>
-                {data.name}
-              </h3>
-              
-              <p className={`text-sm mb-6 ${
-                featured 
-                  ? 'text-white/70 dark:text-black/70' 
-                  : 'text-gray-600 dark:text-gray-400'
-              }`}>
-                {description}
-              </p>
-
-              {/* Price */}
-              <div className="mb-6">
-                <div className="flex items-baseline gap-2">
-                  <span className={`text-5xl font-bold ${
-                    featured ? 'text-white dark:text-black' : ''
-                  }`}>
-                    {data.price}
-                  </span>
-                </div>
-                <p className={`text-sm mt-2 ${
-                  featured 
-                    ? 'text-white/70 dark:text-black/70' 
-                    : 'text-gray-600 dark:text-gray-400'
-                }`}>
-                  {data.timeline} delivery
-                </p>
-              </div>
-
-              {/* Features */}
-              <ul className="space-y-3 mb-8">
-                {data.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-start gap-3">
-                    <FiCheck className={`w-5 h-5 flex-shrink-0 mt-0.5 ${
-                      featured 
-                        ? 'text-white dark:text-black' 
-                        : 'text-green-500'
-                    }`} />
-                    <span className={`text-sm ${
-                      featured 
-                        ? 'text-white/90 dark:text-black/90' 
-                        : 'text-gray-700 dark:text-gray-300'
-                    }`}>
-                      {feature}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-
-              {/* CTA Button */}
-              <a 
-                href={personalData.calendly}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full font-semibold transition-all duration-300 group ${
-                  featured
-                    ? 'bg-white text-black dark:bg-black dark:text-white hover:scale-105'
-                    : 'bg-black text-white dark:bg-white dark:text-black hover:scale-105'
-                }`}
+              <Card
+                className={cn(
+                  'relative text-white border h-full flex flex-col',
+                  plan.popular
+                    ? 'border-sky-500/50 bg-gradient-to-b from-neutral-900 via-neutral-900 to-neutral-950 shadow-[0px_-8px_180px_0px_rgba(124,58,237,0.2)] z-20'
+                    : 'border-neutral-800/80 bg-gradient-to-b from-neutral-900 to-neutral-950 z-10'
+                )}
               >
-                Get started
-                <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
-              </a>
+                {plan.popular && (
+                  <div className="absolute -top-px left-1/2 -translate-x-1/2">
+                    <div className="px-4 py-1 rounded-b-full text-[10px] font-bold uppercase tracking-widest bg-gradient-to-r from-sky-700 to-sky-500 text-white shadow-lg shadow-sky-900/40">
+                      Most popular
+                    </div>
+                  </div>
+                )}
 
-              {/* Guarantee */}
-              {data.guarantee && (
-                <p className={`text-xs mt-4 text-center ${
-                  featured 
-                    ? 'text-white/60 dark:text-black/60' 
-                    : 'text-gray-500 dark:text-gray-500'
-                }`}>
-                  {data.guarantee}
-                </p>
-              )}
+                <CardHeader className="text-left pb-4">
+                  <h3 className="text-2xl font-bold mb-3 text-white">{plan.name}</h3>
+                  <div className="flex items-baseline gap-0.5 mb-2">
+                    <span className="text-neutral-400 text-xl font-semibold">$</span>
+                    <NumberFlow
+                      value={isRetainer ? plan.retainerPrice : plan.projectPrice}
+                      className="text-4xl font-black text-white"
+                    />
+                    <span className="text-neutral-500 text-sm ml-1.5">
+                      /{isRetainer ? 'mo' : 'project'}
+                    </span>
+                  </div>
+                  <p className="text-sm text-neutral-400 leading-relaxed">{plan.description}</p>
+                </CardHeader>
+
+                <CardContent className="pt-0 flex flex-col flex-1">
+                  <a
+                    href={`https://mail.google.com/mail/?view=cm&to=${personalData.email}&su=${encodeURIComponent(`Inquiry: ${plan.name} plan`)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={cn(
+                      'w-full mb-6 py-3.5 text-sm font-semibold rounded-xl text-center transition-all duration-200 active:scale-[0.97] block',
+                      plan.popular
+                        ? 'bg-gradient-to-t from-sky-700 to-sky-500 border border-sky-500/60 shadow-lg shadow-sky-900/40 text-white hover:opacity-90'
+                        : 'bg-gradient-to-t from-neutral-900 to-neutral-800 border border-neutral-700 text-neutral-200 hover:border-neutral-500 hover:text-white'
+                    )}
+                  >
+                    {plan.buttonText}
+                  </a>
+
+                  <div className="space-y-3 pt-4 border-t border-neutral-800/80">
+                    <h4 className="text-[10px] font-bold uppercase tracking-[0.18em] text-neutral-600 mb-3.5">
+                      {plan.includes[0]}
+                    </h4>
+                    <ul className="space-y-2.5">
+                      {plan.includes.slice(1).map((feature, i) => (
+                        <li key={i} className="flex items-start gap-2.5">
+                          <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-sky-500/70" />
+                          <span className="text-sm text-neutral-400 leading-snug">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </CardContent>
+              </Card>
             </motion.div>
           ))}
         </div>
 
-        {/* Retainer Option */}
-        <motion.div
-          className="max-w-4xl mx-auto"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-        >
-          <div className="card p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="flex-1">
-              <div className="badge-primary mb-3">Ongoing Support</div>
-              <h3 className="text-2xl font-bold mb-2">{services.retainer.name}</h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">
-                Keep your app running smoothly with dedicated monthly support
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {services.retainer.features.slice(0, 3).map((feature, idx) => (
-                  <span key={idx} className="text-sm text-gray-600 dark:text-gray-400">
-                    • {feature}
-                  </span>
-                ))}
-              </div>
-            </div>
-            <div className="text-center md:text-right">
-              <div className="text-4xl font-bold mb-2">{services.retainer.price}</div>
-              <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">per month</p>
-              <a 
-                href={personalData.calendly}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-secondary"
-              >
-                Learn more
-              </a>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Bottom CTA */}
-        <motion.div
-          className="text-center mt-20 max-w-2xl mx-auto"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+        {/* Footer note */}
+        <motion.p
+          className="text-center text-neutral-600 text-xs mt-12"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <h3 className="text-3xl font-bold mb-4">Not sure which package?</h3>
-          <p className="text-lg text-gray-600 dark:text-gray-400 mb-6">
-            Book a free 15-minute audit. I'll help you figure out exactly what you need.
-          </p>
-          <a 
-            href={personalData.calendly}
+          All plans include a free 30-min discovery call.{' '}
+          <a
+            href={`https://mail.google.com/mail/?view=cm&to=${personalData.email}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-primary inline-flex"
+            className="text-sky-500 hover:text-sky-400 transition-colors"
           >
-            Book free audit
-            <FiArrowRight />
-          </a>
-        </motion.div>
+            Email me
+          </a>{' '}
+          to get started.
+        </motion.p>
+
       </div>
     </section>
   );

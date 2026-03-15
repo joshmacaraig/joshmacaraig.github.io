@@ -1,10 +1,10 @@
-import React from 'react';
+﻿import React from 'react';
 import { motion } from 'framer-motion';
 import { FiArrowRight } from 'react-icons/fi';
 
 const About = () => {
   return (
-    <section id="about" className="section-padding bg-white dark:bg-[#09090b]">
+    <section id="about" className="section-passthrough section-padding bg-transparent">
       <div className="container-wrapper">
         <div className="max-w-3xl">
 
@@ -19,7 +19,7 @@ const About = () => {
           </motion.p>
 
           <motion.h2
-            className="text-3xl md:text-4xl font-black tracking-tight mb-6 text-[#09090b] dark:text-white leading-tight"
+            className="text-2xl sm:text-3xl md:text-4xl font-black tracking-tight mb-6 text-[#09090b] dark:text-white leading-tight"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -47,8 +47,8 @@ const About = () => {
               product requirements, UX, and the actual build.
             </p>
             <p>
-              Outside client work I run a creative lab of memory games, chess engines, and mini apps that
-              explore animation and AI-assisted workflows — because delight belongs even in serious tools.
+              This portfolio spotlights those operator dashboards, workflow tools, and collaboration layers
+              so partners can quickly see how I approach real product problems.
             </p>
           </motion.div>
 

@@ -5,11 +5,11 @@ const projects = [
     type: "Internal Platform",
     stack: ["React", "WeWeb", "Xano", "Tailwind"],
     description:
-      "A command center for area managers to track staff activity, timeclocks, logs, approvals, and operational reports in one calm UI.",
+      "Command center for area managers to track staff activity, timeclocks, logs, approvals, and operational reports in one place.",
     highlights: [
-      "Real-time presence indicators for field teams",
-      "Approval workflows for time-off and incident reports",
-      "Exportable analytics for leadership stand-ups"
+      "Replaced fragmented tracking across multiple tools and spreadsheets",
+      "Gave leadership faster reporting visibility with exportable analytics",
+      "Real-time presence indicators reduced check-in calls to field teams"
     ],
     featured: true
   },
@@ -19,11 +19,11 @@ const projects = [
     type: "Client Dashboard",
     stack: ["WeWeb", "Xano", "SendGrid", "Chart.js"],
     description:
-      "Dashboard for community managers to handle support tickets, broadcasts, and resident activity with context-rich reporting.",
+      "Dashboard for community managers handling resident support tickets, broadcasts, and activity — with context-rich reporting.",
     highlights: [
-      "Multi-tenant reporting with drill-downs",
-      "Support workflow automation with email notifications",
-      "Activity tracking for HOA boards and committees"
+      "Centralized ticket handling and communication workflows in one portal",
+      "Reduced back-and-forth between teams and improved issue visibility",
+      "Multi-tenant reporting with drill-downs for HOA boards and committees"
     ],
     featured: true
   },
@@ -33,25 +33,25 @@ const projects = [
     type: "Insights Platform",
     stack: ["React", "Node", "Postgres", "OpenAI"],
     description:
-      "Review and scoring platform for sales calls with rich transcripts, AI-assisted grading, and performance insights.",
+      "Review and scoring platform for QA teams — combining transcripts, AI-assisted grading, and performance insights in one flow.",
     highlights: [
-      "Custom rubric builder for QA teams",
-      "Scorecards with trend analysis",
-      "AI suggestions to accelerate grading"
+      "Helped QA teams review calls faster with AI-generated scoring suggestions",
+      "Custom rubric builder kept grading consistent across reviewers",
+      "Trend analysis surfaced coaching opportunities at a team level"
     ],
     featured: true
   },
   {
     id: 3,
     title: "Housing Application Management",
-    type: "Multi-dashboard System",
+    type: "Case Management System",
     stack: ["WeWeb", "Xano", "Webflow", "SendGrid", "Twilio", "OpenAI"],
     description:
-      "Dashboards for agents to process housing applicants, collaborate with caseworkers, and track case progress. Integrated OpenAI to review past communications and applicant details.",
+      "Multi-dashboard system for agents and caseworkers to process applicants, collaborate, and track case progress end-to-end.",
     highlights: [
-      "Role-specific dashboards for agents and managers",
-      "SMS + email updates via Twilio & SendGrid",
-      "AI-powered review of past communications and applicant history"
+      "Improved case visibility and reduced manual follow-up for agents",
+      "SMS + email updates via Twilio & SendGrid kept applicants informed",
+      "AI-powered review of past communications cut research time per case"
     ]
   },
   {
@@ -60,24 +60,24 @@ const projects = [
     type: "Matching Engine",
     stack: ["WeWeb", "Xano", "SendGrid", "Twilio"],
     description:
-      "Matching logic that pairs tenants with available properties, supporting direct transfers, two-way swaps, and complex chains.",
+      "Matching engine pairing tenants with available properties — supporting direct transfers, two-way swaps, and multi-party chains.",
     highlights: [
-      "Automated compatibility scoring",
-      "Multi-party workflow management",
-      "SMS + email notifications throughout process"
+      "Reduced manual matching work with automated compatibility scoring",
+      "Handled complex chain scenarios that previously required manual coordination",
+      "Automated notifications kept all parties updated throughout the process"
     ]
   },
   {
     id: 5,
     title: "Internal Communication Platform",
-    type: "Company Tool",
+    type: "Internal Tool",
     stack: ["Knack", "Integromat", "SendGrid"],
     description:
-      "Announcements, updates, and team communication hub for distributed operations teams.",
+      "Announcements hub for distributed operations teams — segmented by department with read receipts and automated digests.",
     highlights: [
-      "Segmented announcements per department",
-      "Read receipts & engagement tracking",
-      "Automated digests sent daily"
+      "Reduced reliance on scattered email threads and chat channels",
+      "Read receipts and engagement tracking improved message accountability",
+      "Automated daily digests kept remote teams consistently informed"
     ]
   },
   {
@@ -86,11 +86,11 @@ const projects = [
     type: "AI Workflow",
     stack: ["React", "Xano", "OpenAI"],
     description:
-      "Call grading platform that ingests transcripts, runs AI analysis, and assists QA reps with scoring suggestions.",
+      "Call grading platform that ingests transcripts, runs AI analysis, and helps QA reps score faster with structured suggestions.",
     highlights: [
-      "Prompt-engineered summaries of each call",
-      "Outlier detection for coaching sessions",
-      "Secure data pipeline with audit logs"
+      "Prompt-engineered summaries reduced per-call review time significantly",
+      "Outlier detection flagged calls that needed coaching attention",
+      "Secure data pipeline with audit logs for compliance"
     ]
   },
   {
@@ -99,11 +99,11 @@ const projects = [
     type: "Personal Project · Ongoing",
     stack: ["Nuxt", "React", "Supabase"],
     description:
-      "An ongoing personal project — a site builder that lets users create and publish custom websites with their own design preferences and content.",
+      "Personal product exploring reusable site generation, publishing workflows, and user-controlled design systems.",
     highlights: [
-      "Custom component system with live preview",
-      "Supabase-backed auth and storage",
-      "Continuously evolving as a personal experiment"
+      "Custom component system with live preview for immediate feedback",
+      "Supabase-backed auth, storage, and multi-user support",
+      "Continuously evolving as a testbed for new product ideas"
     ],
     ongoing: true
   },
@@ -113,11 +113,11 @@ const projects = [
     type: "Mobile / Web App",
     stack: ["React", "Expo", "Supabase"],
     description:
-      "Media sharing app for events with controlled guest access, moderation, and lightweight editing.",
+      "Controlled media-sharing app for private events — focused on guest access, moderation, and lightweight media flows.",
     highlights: [
-      "Invite-only galleries with expiring links",
-      "Automatic compression + quality presets",
-      "Web + mobile parity with offline-friendly queue"
+      "Invite-only galleries with expiring links kept events private",
+      "Auto compression and quality presets reduced upload friction",
+      "Web and mobile parity with offline-friendly upload queue"
     ]
   },
   {
@@ -126,11 +126,11 @@ const projects = [
     type: "Internal Tool",
     stack: ["React", "Supabase", "Claude MCP"],
     description:
-      "Portal for prayer requests, communications, and a searchable song lyric + chords library with live transposition. Built with Claude MCP integration.",
+      "Portal for prayer requests, team communications, and a searchable song lyric and chords library with live transposition.",
     highlights: [
-      "Chord transposition engine per instrument",
-      "Moderation queue for prayer requests",
-      "Claude MCP integration for AI-assisted community features"
+      "Chord transposition engine made the library usable during live gatherings",
+      "Moderation queue gave leaders control over prayer request visibility",
+      "Claude MCP integration added AI-assisted community features"
     ]
   },
   {
@@ -139,11 +139,11 @@ const projects = [
     type: "Operations App",
     stack: ["React", "Supabase"],
     description:
-      "Fleet, booking, and operations portal for a regional car rental business.",
+      "Fleet, booking, and operations portal built to simplify day-to-day workflows for a regional car rental business.",
     highlights: [
-      "Vehicle status tracking with maintenance logs",
-      "Booking + billing workflows",
-      "Driver assignment + route planning"
+      "Centralized vehicle status, bookings, and billing in one portal",
+      "Maintenance logs and driver assignment reduced coordination overhead",
+      "Replaced a mix of spreadsheets and manual tracking"
     ]
   }
 ];
