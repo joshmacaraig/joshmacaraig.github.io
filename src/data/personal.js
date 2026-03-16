@@ -1,4 +1,4 @@
-﻿const personalData = {
+const personalData = {
   name: "Josh Macaraig",
   title: "Product Engineer & Systems Designer",
   tagline: "Building calm, minimalist tools that still feel high-end.",
